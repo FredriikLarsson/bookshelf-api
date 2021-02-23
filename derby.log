@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Tue Feb 23 13:03:53 CET 2021:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0177-cec6-3a18-000007cbe400 
+on database directory memory:C:\Users\Fredrik\eclipse-workspace\myBookshelf-api\ae1b66e1-b900-4a72-879e-6f4c6ac4a87c with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@7aec35a 
+Loaded from file:/C:/Users/Fredrik/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
+java.vendor=AdoptOpenJDK
+java.runtime.version=11.0.8+10
+user.dir=C:\Users\Fredrik\eclipse-workspace\myBookshelf-api
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
