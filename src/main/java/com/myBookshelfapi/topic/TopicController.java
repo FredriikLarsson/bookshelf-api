@@ -3,11 +3,14 @@ package com.myBookshelfapi.topic;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 public class TopicController {
@@ -53,9 +56,18 @@ public class TopicController {
 		topicService.updateTopic(id, topic);
 	}
 	
+	/*
+	 * Tar bort ett specifikt ämne
+	 * @param id = primärnyckeln hos det ämne som ska tas bort
+	 */
 	@RequestMapping(method = RequestMethod.DELETE, value = "/topics/{id}")
 	public void deleteTopic(@PathVariable long id) {
-		topicService.deleteTopic(id);
+		try {
+			topicService.deleteTopic(id);
+		} catch (EmptyResultDataAccessException e) {
+			throw new ResponseStatusException(
+					HttpStatus.NOT_FOUND, "Topic not found");
+		}
 	}
 	
 }
