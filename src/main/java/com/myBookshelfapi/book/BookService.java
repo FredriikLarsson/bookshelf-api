@@ -1,6 +1,7 @@
 package com.myBookshelfapi.book;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,6 +33,15 @@ public class BookService {
 	public void addBook(String topicId, Book book) {
 		book.setTopic(new Topic(topicId, ""));
 		bookRepository.save(book);
+	}
+
+	/*
+	 * Hämtar en specifik bok
+	 * @param bookId = bokens primärnyckel (ISBN nummer)
+	 * @return den specifika boken
+	 */
+	public Optional<Book> getBook(String bookId) {
+		return bookRepository.findById(bookId);
 	}
 	
 }

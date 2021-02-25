@@ -1,6 +1,7 @@
 package com.myBookshelfapi.book;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,11 +22,19 @@ public class BookController {
 	 * @return en lista med böckerna i ett specifikt ämne
 	 */
 	@RequestMapping("/topics/{topicId}/books")
-	public ArrayList<Book> getBooks(@PathVariable String topicId) {
+	public ArrayList<Book> getAllBooks(@PathVariable String topicId) {
 		return bookService.getAllBooks(topicId);
 	}
 	
-	//hämta en specifik bok
+	/*
+	 * Hämtar en specifik bok
+	 * @param bookId = bokens primärnyckel
+	 * @return den specifika boken
+	 */
+	@RequestMapping("/topics/{topicId}/books/{bookId}")
+	public Optional<Book> getBook(@PathVariable String bookId) {
+		return bookService.getBook(bookId);
+	}
 	
 	/*
 	 * Lägger till en bok till ett specifikt ämne
