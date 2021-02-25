@@ -1,17 +1,14 @@
 package com.myBookshelfapi.topic;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
 public class Topic {
 	
-	@Id
-	@GeneratedValue
-	private long id;
 	//Ämnets namn
-	private String name;
+	@Id
+	private String id;
 	//Beskrivningen över ämnet
 	private String description;
 	
@@ -19,22 +16,16 @@ public class Topic {
 		
 	}
 	
-	public Topic(String name, String description) {
-		this.name = name;
+	public Topic(String id, String description) {
+		this.id = id;
 		this.description = description;
 	}
 	
-	public long getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(String id) {
 		this.id = id;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
 	}
 	public String getDescription() {
 		return description;
@@ -42,7 +33,5 @@ public class Topic {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
-	
 
 }

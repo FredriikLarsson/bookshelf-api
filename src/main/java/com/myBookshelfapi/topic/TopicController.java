@@ -1,6 +1,7 @@
 package com.myBookshelfapi.topic;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -29,12 +30,12 @@ public class TopicController {
 	
 	/*
 	 * Hämtar ett specifikt ämne "topic"
-	 * @param namnet på ämnet
+	 * @param id = namnet på ämnet
 	 * @return ett ämne 
 	 */
-	@RequestMapping("/topics/{topicName}")
-	public Topic getTopic(@PathVariable String topicName) {
-		return topicService.getTopic(topicName);
+	@RequestMapping("/topics/{id}")
+	public Optional<Topic> getTopic(@PathVariable String id) {
+		return topicService.getTopic(id);
 	}
 	
 	/*
@@ -52,7 +53,7 @@ public class TopicController {
 	 * @param id = ämnet som ska uppdateras primära nyckel "id"
 	 */
 	@RequestMapping(method = RequestMethod.PUT, value = "/topics/{id}")
-	public void updateTopic(@RequestBody Topic topic, @PathVariable long id) {
+	public void updateTopic(@RequestBody Topic topic, @PathVariable String id) {
 		topicService.updateTopic(id, topic);
 	}
 	
@@ -61,7 +62,7 @@ public class TopicController {
 	 * @param id = primärnyckeln hos det ämne som ska tas bort
 	 */
 	@RequestMapping(method = RequestMethod.DELETE, value = "/topics/{id}")
-	public void deleteTopic(@PathVariable long id) {
+	public void deleteTopic(@PathVariable String id) {
 		try {
 			topicService.deleteTopic(id);
 		} catch (EmptyResultDataAccessException e) {
