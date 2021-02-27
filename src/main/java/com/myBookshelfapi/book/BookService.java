@@ -43,5 +43,27 @@ public class BookService {
 	public Optional<Book> getBook(String bookId) {
 		return bookRepository.findById(bookId);
 	}
+
+	/*
+	 * Uppdaterar en befintlig bok
+	 * @param book = den nya boken som ska ersätta den gamla
+	 * @param bookIsbn = den gamla bokens isbn nummer
+	 * @param topicId = den gamla bokens ämnes Id
+	 */
+	public void updateBook(String bookIsbn, Book book, String topicId) {
+		if (bookRepository.findById(bookIsbn).isPresent()) {
+			book.setTopic(new Topic(topicId, ""));
+			book.setIsbn(bookIsbn);
+			bookRepository.save(book);
+		}
+	}
+
+	/*
+	 * Tar bort en specifik bok
+	 * @param bookIsbn = bokens isbn nummer
+	 */
+	public void deleteBook(String bookIsbn) {
+		bookRepository.deleteById(bookIsbn);
+	}
 	
 }

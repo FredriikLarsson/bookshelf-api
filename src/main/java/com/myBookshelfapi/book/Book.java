@@ -26,12 +26,11 @@ public class Book {
 		
 	}
 	
-	public Book(String isbn, String titel, String author, Date pubDate, String topicId) {
+	public Book(String isbn, String titel, String author, Date pubDate) {
 		this.isbn = isbn;
 		this.titel = titel;
 		this.author = author;
 		this.pubDate = pubDate;
-		this.topic = new Topic(topicId, "");
 	}
 	
 	public Topic getTopic() {

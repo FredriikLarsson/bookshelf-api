@@ -46,8 +46,24 @@ public class BookController {
 		bookService.addBook(topicId, book);
 	}
 	
-	//updatera en specifik bok
+	/*
+	 * Uppdaterar en befintlig book
+	 * @param book = den nya boken som ska ersätta den gamla
+	 * @param bookIsbn = den gamla bokens isbn nummer
+	 * @param topicId = den gamla bokens ämnes Id
+	 */
+	@RequestMapping(method = RequestMethod.PUT, value = "/topics/{topicId}/books/{bookIsbn}")
+	public void updateBook(@RequestBody Book book, @PathVariable String bookIsbn, @PathVariable String topicId) {
+		bookService.updateBook(bookIsbn, book, topicId);
+	}
 	
-	//ta bort en specifik bok
+	/*
+	 * Tar bort en specifik bok
+	 * @param bookIsbn = bokens isbn nummer
+	 */
+	@RequestMapping(method = RequestMethod.DELETE, value = "/topics/{topicId}/books/{bookIsbn}")
+	public void deleteBook(@PathVariable String bookIsbn) {
+		bookService.deleteBook(bookIsbn);
+	}
 	
 }
