@@ -1,36 +1,37 @@
 package com.myBookshelfapi.book;
 
 import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.myBookshelfapi.topic.Topic;
+
 
 @Entity
 public class Book {
 	
 	@Id
 	private String isbn;
-	private String titel;
+	private String title;
 	private String author;
 	//Bokens publiceringsdatum
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
-	private Date pubDate;
+	private Date pubdate;
 	@ManyToOne
+	@JoinColumn(name="topic_id")
 	private Topic topic;
 
 	public Book() {
 		
 	}
 	
-	public Book(String isbn, String titel, String author, Date pubDate) {
+	public Book(String isbn, String title, String author, Date pubdate) {
 		this.isbn = isbn;
-		this.titel = titel;
+		this.title = title;
 		this.author = author;
-		this.pubDate = pubDate;
+		this.pubdate = pubdate;
 	}
 	
 	public Topic getTopic() {
@@ -49,12 +50,12 @@ public class Book {
 		this.isbn = isbn;
 	}
 
-	public String getTitel() {
-		return titel;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setTitel(String titel) {
-		this.titel = titel;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public String getAuthor() {
@@ -65,12 +66,12 @@ public class Book {
 		this.author = author;
 	}
 
-	public Date getPubDate() {
-		return pubDate;
+	public Date getPubdate() {
+		return pubdate;
 	}
 
-	public void setPubDate(Date pubDate) {
-		this.pubDate = pubDate;
+	public void setPubdate(Date pubdate) {
+		this.pubdate = pubdate;
 	}
 
 }

@@ -2,11 +2,11 @@ package com.myBookshelfapi.book;
 
 import java.util.ArrayList;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.myBookshelfapi.topic.Topic;
+
 
 @Service
 public class BookService {
@@ -21,7 +21,7 @@ public class BookService {
 	 */
 	public ArrayList<Book> getAllBooks(String topicId) {
 		ArrayList<Book> books = new ArrayList<Book>();
-		bookRepository.findByTopicId(topicId).forEach(t -> books.add(t));
+		bookRepository.findByTopicTopicId(topicId).forEach(t -> books.add(t));
 		return books;
 	}
 	

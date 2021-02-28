@@ -3,12 +3,13 @@ package com.myBookshelfapi.topic;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+
 @Entity
 public class Topic {
 	
 	//Ämnets namn
 	@Id
-	private String id;
+	private String topicId;
 	//Beskrivningen över ämnet
 	private String description;
 	
@@ -16,16 +17,16 @@ public class Topic {
 		
 	}
 	
-	public Topic(String id, String description) {
-		this.id = id;
+	public Topic(String topicId, String description) {
+		this.topicId = topicId;
 		this.description = description;
 	}
 	
 	public String getId() {
-		return id;
+		return topicId;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setId(String topicId) {
+		this.topicId = topicId;
 	}
 	public String getDescription() {
 		return description;
